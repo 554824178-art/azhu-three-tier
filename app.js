@@ -77,24 +77,6 @@
     });
   });
 
-  const phaseButtons = document.querySelectorAll("[data-phase-filter]");
-  const calendarRows = document.querySelectorAll(
-    "#content-calendar .calendar-row[data-phase]"
-  );
-
-  phaseButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      const phase = button.getAttribute("data-phase-filter");
-      phaseButtons.forEach(function (item) {
-        item.classList.toggle("active", item === button);
-      });
-      calendarRows.forEach(function (row) {
-        row.hidden =
-          phase !== "all" && row.getAttribute("data-phase") !== phase;
-      });
-    });
-  });
-
   const classButtons = document.querySelectorAll("[data-class-filter]");
   const videoRows = document.querySelectorAll(
     "#video-list .video-row[data-class]"
