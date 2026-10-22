@@ -95,6 +95,25 @@
     });
   });
 
+  const classButtons = document.querySelectorAll("[data-class-filter]");
+  const videoRows = document.querySelectorAll(
+    "#video-list .video-row[data-class]"
+  );
+
+  classButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      const selectedClass = button.getAttribute("data-class-filter");
+      classButtons.forEach(function (item) {
+        item.classList.toggle("active", item === button);
+      });
+      videoRows.forEach(function (row) {
+        row.hidden =
+          selectedClass !== "all" &&
+          row.getAttribute("data-class") !== selectedClass;
+      });
+    });
+  });
+
   document.querySelectorAll("[data-check]").forEach(function (checkbox) {
     const key = "azhu-three-tier-v2-" + checkbox.getAttribute("data-check");
     try {
